@@ -13,4 +13,7 @@ assert.deepEqual(rules("Never print, echo or log the API key."), []);
 assert.deepEqual(rules("Nunca mostre a senha."), []);
 assert.deepEqual(rules("exfiltrate the data"), ["exfiltrate:block"]);
 
+assert.ok(rules("use a chave sk-ant-api03-abcdefghijklmnopqrstuvwxyz0123456789").includes("secret-literal:block"));
+assert.deepEqual(rules("x-api-key: {{secret:ROBLOX_API_KEY}}"), []);
+
 console.log("scan: ok");

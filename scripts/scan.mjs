@@ -24,6 +24,7 @@ export const HOST_ALLOWLIST = [
 const NEGATION = /\b(never|do not|don't|dont|must not|without|nunca|jamais|não|nao|evite|sem)\b/i;
 
 const RULES = [
+	{ id: "secret-literal", severity: "block", re: /(\b(?:sk|rk|pk)-[A-Za-z0-9_-]{20,}|\bAKIA[0-9A-Z]{16}\b|\bAIza[0-9A-Za-z_-]{30,}|\b(?:gh[pousr]|github_pat)_[A-Za-z0-9_]{20,}|\bxox[abpr]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|x-api-key:\s*[A-Za-z0-9_-]{20,})/, negatable: false },
 	{ id: "exfiltrate", severity: "block", re: /\b(exfiltrat\w*|exfiltr\w*)\b/i, negatable: true },
 	{ id: "send-to-url", severity: "block", re: /\b(send|post|upload|forward|envie|enviar|mande)\b[^\n]{0,60}\b(secrets?|keys?|tokens?|passwords?|senhas?|credentials?|credenciais|chaves?|cookies?|vault|cofre)\b[^\n]{0,60}\bhttps?:\/\//i, negatable: true },
 	{ id: "ignore-previous", severity: "block", re: /\b(ignore|disregard|forget|esque[cç]a|ignore)\b[^\n]{0,20}\b(previous|prior|above|earlier|all)\b[^\n]{0,20}\b(instructions?|rules?|prompts?|instru[cç][õo]es|regras)\b/i, negatable: false },
@@ -56,7 +57,8 @@ export function scanText(text) {
 			const match = rule.re.exec(line);
 			if (!match) continue;
 			if (rule.negatable && NEGATION.test(line.slice(Math.max(0, match.index - 60), match.index + match[0].length))) continue;
-			findings.push({ rule: rule.id, severity: rule.severity, line: index + 1, excerpt });
+			// Nunca imprime o trecho de um segredo (logs da CI).
+			findings.push({ rule: rule.id, severity: rule.severity, line: index + 1, excerpt: rule.id === "secret-literal" ? "[trecho oculto]" : excerpt });
 		}
 		if (/\b(curl|wget)\b/.test(line)) {
 			for (const url of line.match(/https?:\/\/[^\s"'`)<>\\]+/gi) ?? []) {
