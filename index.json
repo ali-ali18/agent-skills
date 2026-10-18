@@ -40,6 +40,8 @@
       "skills": [
         "roblox"
       ],
+      "color": "red",
+      "shape": "squircle",
       "path": "bots/dev-roblox",
       "sha256": "5d633b5ef2cc9cef71fae9f8ff2aa9ced1962bfdffe940f45821a8a9bdde064a"
     }

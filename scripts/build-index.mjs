@@ -149,6 +149,8 @@ for (const slug of folders("bots")) {
 		category: bot.category,
 		tags: bot.tags,
 		skills: bot.skills,
+		color: bot.appearance.color,
+		shape: bot.appearance.shape,
 		path: where,
 		sha256: sha256(file.text),
 	});
