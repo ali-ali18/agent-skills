@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "slug": "roblox",
+      "name": "Roblox (Luau + Rojo)",
+      "description": "Desenvolve jogos Roblox em Luau com Rojo dentro da VM e publica por Open Cloud em um lugar de TESTE informado pelo usuário.",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "games",
+      "tags": [
+        "roblox",
+        "luau",
+        "rojo",
+        "open-cloud"
+      ],
+      "tools": [
+        "shell",
+        "secret_list",
+        "secret_request",
+        "propose_questionnaire"
+      ],
+      "path": "skills/roblox",
+      "sha256": "26342cb362bc25701e3fca5a1d5c554d12a9a00db1063908f59d16714a21449e",
+      "manifestSha256": "11c6facba20fadbaddc0d64382d81d1da05f3653ea7d6ef27511c886368680f2"
+    }
+  ],
+  "bots": [
+    {
+      "slug": "dev-roblox",
+      "name": "Dev Roblox",
+      "description": "Luau, Rojo e publicação em lugar de teste",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "games",
+      "tags": [
+        "roblox",
+        "luau"
+      ],
+      "skills": [
+        "roblox"
+      ],
+      "path": "bots/dev-roblox",
+      "sha256": "5d633b5ef2cc9cef71fae9f8ff2aa9ced1962bfdffe940f45821a8a9bdde064a"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ali-ali18/agent-skills/schema/manifest.schema.json",
+  "title": "Skill manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "name", "description", "version", "author", "category", "tags", "tools", "changelog"],
+  "properties": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64, "description": "Igual ao nome da pasta e ao campo name do SKILL.md." },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 300, "pattern": "^[^\\r\\n]+$", "description": "Uma linha. Igual ao description do SKILL.md." },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "author": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "category": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 32 },
+    "tags": { "type": "array", "maxItems": 10, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 32 } },
+    "tools": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "description": "Dicas de ferramentas/conectores. Nunca concedem permissão.",
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$", "maxLength": 64 }
+    },
+    "minAppVersion": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "changelog": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["version", "notes"],
+        "properties": {
+          "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+          "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "notes": { "type": "string", "minLength": 1, "maxLength": 500 }
+        }
+      }
+    }
+  }
+}

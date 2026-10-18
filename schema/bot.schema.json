@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ali-ali18/agent-skills/schema/bot.schema.json",
+  "title": "Bot template",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "name", "description", "snippet", "appearance", "skills", "version", "author", "category", "tags", "changelog"],
+  "properties": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 600, "description": "Papel/briefing do agente." },
+    "snippet": { "type": "string", "minLength": 1, "maxLength": 90 },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["color", "shape"],
+      "properties": {
+        "color": { "enum": ["black", "brown", "red", "orange", "yellow", "green", "cyan", "blue", "violet", "magenta", "gray"] },
+        "shape": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32, "description": "Um id de forma do editor de avatar do app; o app usa a padrão se não conhecer." }
+      }
+    },
+    "suggestedModel": { "type": ["string", "null"], "maxLength": 120, "description": "Opcional. Sem modelo ou indisponível: usa o padrão do usuário." },
+    "skills": { "type": "array", "maxItems": 5, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }, "description": "Slugs de skills deste catálogo." },
+    "suggestedConnectors": {
+      "type": "array",
+      "maxItems": 10,
+      "description": "Somente informativo; o usuário conecta depois.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_-]+$", "maxLength": 40 },
+          "reason": { "type": "string", "maxLength": 200 }
+        }
+      }
+    },
+    "setupNotes": { "type": "array", "maxItems": 10, "items": { "type": "string", "maxLength": 300 } },
+    "starterRoutines": {
+      "type": "array",
+      "maxItems": 5,
+      "description": "Somente SUGESTÕES; o usuário aprova uma a uma.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "prompt", "cron"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+          "cron": { "type": "string", "pattern": "^\\S+( \\S+){4}$", "description": "Cron de 5 campos." }
+        }
+      }
+    },
+    "firstMessage": { "type": "string", "maxLength": 2000 },
+    "minAppVersion": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "author": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "category": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 32 },
+    "tags": { "type": "array", "maxItems": 10, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 32 } },
+    "changelog": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["version", "notes"],
+        "properties": {
+          "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+          "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "notes": { "type": "string", "minLength": 1, "maxLength": 500 }
+        }
+      }
+    }
+  }
+}

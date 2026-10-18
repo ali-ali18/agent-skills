@@ -1,0 +1,13 @@
+{
+  "slug": "roblox",
+  "name": "Roblox (Luau + Rojo)",
+  "description": "Desenvolve jogos Roblox em Luau com Rojo dentro da VM e publica por Open Cloud em um lugar de TESTE informado pelo usuário.",
+  "version": "1.0.0",
+  "author": "ali-ali18",
+  "category": "games",
+  "tags": ["roblox", "luau", "rojo", "open-cloud"],
+  "tools": ["shell", "secret_list", "secret_request", "propose_questionnaire"],
+  "changelog": [
+    { "version": "1.0.0", "date": "2026-10-17", "notes": "Primeira versão: Rojo 7.7.1, layout de projeto, convenções Luau, segurança de Remotes e publicação Open Cloud em lugar de teste." }
+  ]
+}
