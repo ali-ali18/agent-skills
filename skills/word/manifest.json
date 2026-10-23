@@ -1,0 +1,25 @@
+{
+  "slug": "word",
+  "name": "Word (.docx)",
+  "description": "Cria e edita documentos Word (.docx) em pt-BR: relatórios, contratos simples, atas, propostas, currículos e trabalhos ABNT, com estilos, tabelas, cabeçalho, rodapé e numeração.",
+  "version": "1.0.0",
+  "author": "ali-ali18",
+  "category": "produtividade",
+  "tags": [
+    "word",
+    "docx",
+    "documentos",
+    "abnt"
+  ],
+  "tools": [
+    "create_file",
+    "run_code"
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-23",
+      "notes": "Primeira versão: relatórios, atas, propostas, contratos simples, currículos e ABNT básico com create_file e run_code."
+    }
+  ]
+}

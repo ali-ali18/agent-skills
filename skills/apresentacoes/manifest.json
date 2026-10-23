@@ -1,0 +1,27 @@
+{
+  "slug": "apresentacoes",
+  "name": "Apresentações (.pptx)",
+  "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, KPIs e gráficos, tema e cor da marca, notas do apresentador e conferência visual antes de entregar.",
+  "version": "1.0.0",
+  "author": "ali-ali18",
+  "category": "produtividade",
+  "tags": [
+    "powerpoint",
+    "pptx",
+    "slides",
+    "apresentacoes"
+  ],
+  "tools": [
+    "create_file",
+    "run_code",
+    "generate_image",
+    "show_image"
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-23",
+      "notes": "Primeira versão: narrativa, layouts variados, KPIs e gráficos, tema e cor da marca, modelo do usuário, notas e conferência visual."
+    }
+  ]
+}

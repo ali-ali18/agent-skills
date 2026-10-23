@@ -1,0 +1,25 @@
+{
+  "slug": "planilhas",
+  "name": "Planilhas (Excel e CSV)",
+  "description": "Cria, limpa e converte planilhas Excel (.xlsx) e CSV em pt-BR: abas, formatos de moeda e data, fórmulas reais, tabelas, filtros, gráficos, validação de dados e cuidado com separador e vírgula decimal.",
+  "version": "1.0.0",
+  "author": "ali-ali18",
+  "category": "produtividade",
+  "tags": [
+    "excel",
+    "xlsx",
+    "csv",
+    "planilhas"
+  ],
+  "tools": [
+    "create_file",
+    "run_code"
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-23",
+      "notes": "Primeira versão: formatos BRL e datas, fórmulas reais, tabelas, gráficos, validação, limpeza de dados e CSV brasileiro."
+    }
+  ]
+}

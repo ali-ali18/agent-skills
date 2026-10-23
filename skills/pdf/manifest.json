@@ -1,0 +1,24 @@
+{
+  "slug": "pdf",
+  "name": "PDF",
+  "description": "Trabalha com PDF em pt-BR: gerar a partir de Word, Markdown ou HTML, juntar, dividir, extrair texto e tabelas, OCR de escaneados, preencher formulários, marca d'água e comprimir.",
+  "version": "1.0.0",
+  "author": "ali-ali18",
+  "category": "produtividade",
+  "tags": [
+    "pdf",
+    "ocr",
+    "documentos"
+  ],
+  "tools": [
+    "create_file",
+    "run_code"
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-23",
+      "notes": "Primeira versão: gerar, juntar, dividir, extrair texto e tabelas, OCR, formulários, marca d'água e compressão."
+    }
+  ]
+}
