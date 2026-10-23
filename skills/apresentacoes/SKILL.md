@@ -1,7 +1,7 @@
 ---
 name: apresentacoes
-description: Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, KPIs e gráficos, tema e cor da marca, notas do apresentador e conferência visual antes de entregar.
-tools: [create_file, run_code, generate_image, show_image]
+description: Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, slide livre, fundos gerados, modelo .pptx do usuário, KPIs e gráficos, notas e conferência antes de entregar.
+tools: [create_file, inspect_presentation, generate_image, show_image, run_code]
 ---
 
 # Apresentações (.pptx)
@@ -12,8 +12,9 @@ Você entrega slides que a pessoa vai projetar ou enviar. Escreva em pt-BR. Núm
 
 | Situação | Ferramenta |
 |---|---|
-| Deck normal do zero | `create_file` com `.pptx` e `slides[]`: monta tudo nativamente (temas, gráficos, tabelas, KPIs, notas) |
-| Usar o `.pptx`/`.potx` do usuário como modelo, editar um deck existente, slide totalmente livre, fundo gerado, ajuste fino | `run_code` com `python-pptx` (anexo em `files`, leitura em `in/<arquivo>`, saída em `/work/out/`) |
+| Deck do zero, inclusive com design livre e fundos | `create_file` com `.pptx` e `slides[]`: monta tudo nativamente (temas, gráficos, tabelas, KPIs, slide livre, fundos, notas) |
+| Usar o `.pptx`/`.potx` do usuário como modelo | `inspect_presentation` no arquivo e depois `create_file` com `template_file_id` |
+| Editar um deck existente slide a slide, ou algo que o `create_file` não faz | `run_code` com `python-pptx` (anexo em `files`, leitura em `in/<arquivo>`, saída em `/work/out/`) |
 | Entregar também em PDF | skill `pdf` ou `soffice --headless --convert-to pdf` |
 
 Não escreva python-pptx à mão para um deck comum.
@@ -24,7 +25,7 @@ Planeje antes de chamar a ferramenta: capa, agenda, 2 a 4 seções, dados, concl
 
 ## 3. Layouts do `create_file`
 
-`layout`: `title`, `agenda`, `section`, `bullets`, `two_column`, `image`, `chart`, `table`, `quote`, `stats`, `timeline`, `closing`.
+`layout`: `title`, `agenda`, `section`, `bullets`, `two_column`, `image`, `chart`, `table`, `quote`, `stats`, `timeline`, `closing`, `free`.
 
 - `bullets`: até 6 itens curtos (texto ou `{text, sub[]}`); sem parágrafos.
 - `two_column`: `columns [{heading, bullets[]}, {heading, bullets[]}]` (comparar, prós e contras).
@@ -34,6 +35,7 @@ Planeje antes de chamar a ferramenta: capa, agenda, 2 a 4 seções, dados, concl
 - `timeline`: `steps [{label, title, text?}]` (2 a 6) para plano e roadmap.
 - `quote`: `quote`, `author?`. `closing`: `title`, `subtitle?`, `bullets[]` com próximos passos.
 - `notes` em cada slide: roteiro de fala (até 2.000 caracteres). Detalhe vai nas notas, não no slide.
+- `free`: design livre (pitch, capa especial, diagrama, grade de comparação). Até 30 `elements` posicionados em polegadas numa página de 13,333 x 7,5: `text`, `shape` (retângulo, arredondado, círculo, linha, seta), `image`, `icon` (ícones lucide), `chart`, `table`. Não há título automático: inclua um `text`. Margem de 0,5 pol., corpo com 14 pt ou mais, sem texto sobreposto. Cores em `#rrggbb` ou tokens do tema.
 
 Regras de qualidade:
 - Varie os layouts: nunca mais de dois `bullets` seguidos.
@@ -46,21 +48,21 @@ Regras de qualidade:
 
 - `image` aceita o id de um anexo ou de uma imagem feita com `generate_image` (gere antes); nunca URL. Sem imagem disponível, troque o layout.
 - Mostre imagem gerada ao usuário com `show_image` se ele quiser aprovar antes.
-- Fundos gerados (via `run_code` + `python-pptx`): gere a imagem, aplique no fundo e coloque uma camada de contraste (retângulo escuro ou claro com transparência) sob o texto. Texto sobre fundo precisa de contraste alto e tamanho mínimo de 18 pt no corpo e 28 pt nos títulos.
+- Fundos: qualquer slide aceita `background` (cor, gradiente ou imagem). Para capa ou seção num estilo pedido ("minimalista japonês", "tema agro"), chame `generate_image` antes (composição larga 16:9, área calma onde vai o título, sem texto na imagem) e use o id dela (ou `generated:latest`) como fundo. O véu padrão mantém o texto legível: não desligue. Não esconda dados sob foto.
 
-## 5. Modelo do usuário (python-pptx)
+## 5. Modelo do usuário
 
-1. Abra o arquivo, liste `prs.slide_layouts` e os placeholders de cada um.
-2. Use os layouts do modelo (capa, conteúdo, seção); preencha placeholders em vez de criar caixas soltas; preserve fontes, cores e logotipo.
-3. Slide livre: `slide.shapes.add_textbox`/`add_picture`/`add_chart`; mantenha margens de ao menos 0,5 pol., alinhamento e grade consistentes.
-4. Notas: `slide.notes_slide.notes_text_frame.text = "..."`.
-5. Salve com outro nome em `/work/out/`; não sobrescreva o original.
+1. Rode `inspect_presentation` no arquivo do usuário para ver os layouts (nomes), fontes, cores e como ele é.
+2. Chame `create_file` com `template_file_id` (id do anexo ou do arquivo): os slides usam os layouts, fontes, cores e fundos do modelo, com texto nos placeholders (editável). `theme` e `brand_color` são ignorados.
+3. Force um layout do modelo com `template_layout` no slide quando a escolha automática não servir.
+4. Arquivo com macro (`.pptm`) é recusado. Se o preenchimento não estiver disponível, avise e monte com um tema.
 
 ## 6. Conferir antes de entregar
 
 - Revise o texto: sem "Lorem", "TODO", "[nome]"; números iguais em todos os slides; ortografia.
-- Deck que importa: converta para PDF (`soffice --headless --convert-to pdf`; para deck do `create_file`, passe o id do arquivo em `files` e use `in/<nome>.pptx`), rasterize com `pdftoppm` em `/work/preview/` e olhe: texto cortado ou sobreposto, tabela estourando, gráfico ilegível, contraste fraco, imagem faltando. Corrija o conteúdo e gere de novo.
-- Sem visão de imagem ou sem `run_code`, avise que o layout não foi conferido visualmente.
+- O resultado do `create_file` traz avisos de layout (texto que não cabe, sobreposição, contraste, fonte pequena) e, quando possível, imagens dos slides renderizados. Corrija o que aparecer e gere de novo com o mesmo `filename`.
+- Olhe cada slide: texto cortado ou sobreposto, tabela estourando, gráfico ilegível, contraste fraco, placeholder vazio, imagem faltando.
+- Se o resultado disser que a conferência visual não foi feita, confie nos avisos e não comente mais nada.
 
 ## 7. Resposta
 

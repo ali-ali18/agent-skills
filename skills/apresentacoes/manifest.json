@@ -1,8 +1,8 @@
 {
   "slug": "apresentacoes",
   "name": "Apresentações (.pptx)",
-  "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, KPIs e gráficos, tema e cor da marca, notas do apresentador e conferência visual antes de entregar.",
-  "version": "1.0.0",
+  "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, slide livre, fundos gerados, modelo .pptx do usuário, KPIs e gráficos, notas e conferência antes de entregar.",
+  "version": "1.1.0",
   "author": "ali-ali18",
   "category": "produtividade",
   "tags": [
@@ -13,11 +13,17 @@
   ],
   "tools": [
     "create_file",
-    "run_code",
+    "inspect_presentation",
     "generate_image",
-    "show_image"
+    "show_image",
+    "run_code"
   ],
   "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-23",
+      "notes": "Usa os recursos nativos do Atlas: modelo .pptx do usuário (inspect_presentation + template_file_id), slide livre, fundos com imagem gerada e conferência automática com avisos de layout."
+    },
     {
       "version": "1.0.0",
       "date": "2026-10-23",
