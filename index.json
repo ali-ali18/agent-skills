@@ -2,6 +2,70 @@
   "schemaVersion": 1,
   "skills": [
     {
+      "slug": "apresentacoes",
+      "name": "Apresentações (.pptx)",
+      "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, KPIs e gráficos, tema e cor da marca, notas do apresentador e conferência visual antes de entregar.",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "produtividade",
+      "tags": [
+        "powerpoint",
+        "pptx",
+        "slides",
+        "apresentacoes"
+      ],
+      "tools": [
+        "create_file",
+        "run_code",
+        "generate_image",
+        "show_image"
+      ],
+      "path": "skills/apresentacoes",
+      "sha256": "4f66e2b18c25c280649d7400139cfde3d7ee0e27da9699e1148ebcaa79beb08b",
+      "manifestSha256": "ad1b9b083b56108edea680201849c3d08ee9d08c45ff9bf7c220b93b2fb83f5d"
+    },
+    {
+      "slug": "pdf",
+      "name": "PDF",
+      "description": "Trabalha com PDF em pt-BR: gerar a partir de Word, Markdown ou HTML, juntar, dividir, extrair texto e tabelas, OCR de escaneados, preencher formulários, marca d'água e comprimir.",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "produtividade",
+      "tags": [
+        "pdf",
+        "ocr",
+        "documentos"
+      ],
+      "tools": [
+        "create_file",
+        "run_code"
+      ],
+      "path": "skills/pdf",
+      "sha256": "5a5b5e439ecea5d88aa798ed7b12f30e41aa4205eebd1151f8117a4c6b6287d1",
+      "manifestSha256": "1e846d9fb7d3b9e9a86f38e59091fd7dc262ee93e0245aa04e5b2740cb5d8103"
+    },
+    {
+      "slug": "planilhas",
+      "name": "Planilhas (Excel e CSV)",
+      "description": "Cria, limpa e converte planilhas Excel (.xlsx) e CSV em pt-BR: abas, formatos de moeda e data, fórmulas reais, tabelas, filtros, gráficos, validação de dados e cuidado com separador e vírgula decimal.",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "produtividade",
+      "tags": [
+        "excel",
+        "xlsx",
+        "csv",
+        "planilhas"
+      ],
+      "tools": [
+        "create_file",
+        "run_code"
+      ],
+      "path": "skills/planilhas",
+      "sha256": "def72e99687323da8c57413b82b57c4c86437233a60dea28152ba72d7d011b96",
+      "manifestSha256": "87f73e9dd2e4acffb4472e46b9c647f019482d8e4f9ba4498eef688c8c58f9fa"
+    },
+    {
       "slug": "roblox",
       "name": "Roblox (Luau + Rojo)",
       "description": "Desenvolve jogos Roblox em Luau com Rojo dentro da VM e publica por Open Cloud em um lugar de TESTE informado pelo usuário.",
@@ -23,6 +87,27 @@
       "path": "skills/roblox",
       "sha256": "26342cb362bc25701e3fca5a1d5c554d12a9a00db1063908f59d16714a21449e",
       "manifestSha256": "11c6facba20fadbaddc0d64382d81d1da05f3653ea7d6ef27511c886368680f2"
+    },
+    {
+      "slug": "word",
+      "name": "Word (.docx)",
+      "description": "Cria e edita documentos Word (.docx) em pt-BR: relatórios, contratos simples, atas, propostas, currículos e trabalhos ABNT, com estilos, tabelas, cabeçalho, rodapé e numeração.",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "produtividade",
+      "tags": [
+        "word",
+        "docx",
+        "documentos",
+        "abnt"
+      ],
+      "tools": [
+        "create_file",
+        "run_code"
+      ],
+      "path": "skills/word",
+      "sha256": "5177227609e39d69e152d70cc3245648dd3ae8a9ff670e6919ee4699e80e6cff",
+      "manifestSha256": "102284614a4253ac65d32be690a8d46f1630d512b2255d923f950bc75fb3443e"
     }
   ],
   "bots": [
