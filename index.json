@@ -4,8 +4,8 @@
     {
       "slug": "apresentacoes",
       "name": "Apresentações (.pptx)",
-      "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, KPIs e gráficos, tema e cor da marca, notas do apresentador e conferência visual antes de entregar.",
-      "version": "1.0.0",
+      "description": "Cria apresentações PowerPoint (.pptx) em pt-BR com narrativa clara, layouts variados, slide livre, fundos gerados, modelo .pptx do usuário, KPIs e gráficos, notas e conferência antes de entregar.",
+      "version": "1.1.0",
       "author": "ali-ali18",
       "category": "produtividade",
       "tags": [
@@ -16,13 +16,14 @@
       ],
       "tools": [
         "create_file",
-        "run_code",
+        "inspect_presentation",
         "generate_image",
-        "show_image"
+        "show_image",
+        "run_code"
       ],
       "path": "skills/apresentacoes",
-      "sha256": "4f66e2b18c25c280649d7400139cfde3d7ee0e27da9699e1148ebcaa79beb08b",
-      "manifestSha256": "ad1b9b083b56108edea680201849c3d08ee9d08c45ff9bf7c220b93b2fb83f5d"
+      "sha256": "66ef47cf1fdcacd7fdc6479a26e08fdee285e292f93de824443c1fcadf8bdadf",
+      "manifestSha256": "f8fb7a463492d99e258e319e22c19e63148bf5ba03c8e6b4a719358d5aacb0c8"
     },
     {
       "slug": "pdf",
