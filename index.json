@@ -129,6 +129,30 @@
       "shape": "squircle",
       "path": "bots/dev-roblox",
       "sha256": "5d633b5ef2cc9cef71fae9f8ff2aa9ced1962bfdffe940f45821a8a9bdde064a"
+    },
+    {
+      "slug": "escritorio",
+      "name": "Escritório",
+      "description": "Word, Excel, slides e PDF prontos para usar",
+      "version": "1.0.0",
+      "author": "ali-ali18",
+      "category": "produtividade",
+      "tags": [
+        "word",
+        "excel",
+        "powerpoint",
+        "pdf"
+      ],
+      "skills": [
+        "word",
+        "planilhas",
+        "apresentacoes",
+        "pdf"
+      ],
+      "color": "blue",
+      "shape": "squircle",
+      "path": "bots/escritorio",
+      "sha256": "fd4c18c43d0c51766fa2fa7a496c014121799570fc2017f6749ff44b12f6d9ca"
     }
   ]
 }
